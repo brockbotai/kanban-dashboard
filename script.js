@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Save and Load Functions ---
 
-    function saveState() {
+    async function saveState() {
         const state = {};
         columns.forEach(column => {
             const columnId = column.id;
@@ -80,14 +80,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             state[columnId] = tasks;
         });
-        localStorage.setItem('kanbanState', JSON.stringify(state));
-        console.log("Kanban state saved.");
+        
+        try {
+            await fetch('/api/tasks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(state),
+            });
+            console.log("Kanban state saved to server.");
+        } catch (error) {
+            console.error("Error saving state:", error);
+        }
     }
 
-    function loadState() {
-        const savedState = localStorage.getItem('kanbanState');
-        if (savedState) {
-            const state = JSON.parse(savedState);
+    async function loadState() {
+        try {
+            const response = await fetch('/api/tasks');
+            const state = await response.json();
 
             // Clear existing tasks from all columns
             columns.forEach(column => {
@@ -104,9 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             }
-            console.log("Kanban state loaded.");
-        } else {
-            console.log("No saved state found.");
+            console.log("Kanban state loaded from server.");
+        } catch (error) {
+            console.error("Error loading state:", error);
         }
     }
 
