@@ -34,6 +34,45 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-text {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.task:hover .task-actions {
+    opacity: 1;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    font-size: 1.1em;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.edit-btn:hover {
+    color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.delete-btn:hover {
+    color: #f44336;
+    background-color: rgba(244, 67, 54, 0.1);
 }
 
 .add-task-btn {
