@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brock's Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="kanban-board">
+        <div class="kanban-column" id="todo">
+            <h2>TO DO</h2>
+            <div class="tasks">
+                <div class="task">Add ability to create new tasks from the UI</div>
+                <div class="task">Save task state to a file or local storage</div>
+                <div class="task">Improve styling to closer match the screenshot</div>
+            </div>
+            <button class="add-task-btn">+ Add Task</button>
+        </div>
+        <div class="kanban-column" id="inprogress">
+            <h2>IN PROGRESS</h2>
+            <div class="tasks">
+                <div class="task">Build basic Kanban board structure (HTML/CSS)</div>
+                <div class="task">Implement drag-and-drop functionality</div>
+            </div>
+            <button class="add-task-btn">+ Add Task</button>
+        </div>
+        <div class="kanban-column" id="done">
+            <h2>DONE</h2>
+            <div class="tasks"></div>
+            <button class="add-task-btn">+ Add Task</button>
+        </div>
+        <div class="kanban-column" id="archive">
+            <h2>ARCHIVE</h2>
+            <div class="tasks"></div>
+            <button class="add-task-btn">+ Add Task</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
